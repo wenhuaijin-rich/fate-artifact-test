@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>本命器物测试 · 哪一件器物，和你的灵魂同频？</title>
+<meta name="description" content="原创国风趣味自测：六件东方器物，六种灵魂频率。12 道小题，看看哪一件器物与你同频。">
+<style>
+:root{
+  --paper:#f6f1e4;
+  --paper-deep:#efe8d6;
+  --card:#fffdf6;
+  --ink:#2c2a22;
+  --ink-soft:#6d6858;
+  --line:#e3dac2;
+  --green:#2f6b4f;
+  --green-deep:#245239;
+  --green-tint:#eaf1ea;
+  --gold:#b08a3e;
+  --gold-text:#7d5c28;
+  --danger:#a4553d;
+  --radius:16px;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{-webkit-text-size-adjust:100%}
+body{
+  font-family:"Noto Serif SC","Source Han Serif SC","Songti SC","STSong","SimSun",Georgia,serif;
+  background:
+    radial-gradient(1200px 500px at 85% -10%, rgba(176,138,62,.10), transparent 60%),
+    radial-gradient(900px 420px at -10% 20%, rgba(47,107,79,.08), transparent 60%),
+    var(--paper);
+  color:var(--ink);
+  line-height:1.75;
+  min-height:100vh;
+}
+/* 背景云纹 */
+body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='120' viewBox='0 0 220 120'><g fill='none' stroke='%23c9b98d' stroke-width='1' opacity='.18'><path d='M10 90 q15 -22 30 0 q15 22 30 0 q15 -22 30 0'/><path d='M120 40 q15 -22 30 0 q15 22 30 0'/><circle cx='185' cy='95' r='12'/><circle cx='185' cy='95' r='5'/><path d='M20 25 q12 -16 24 0'/></g></svg>");
+  opacity:.5;
+}
+#app{position:relative;z-index:1;max-width:720px;margin:0 auto;padding:0 20px 56px}
+.screen{display:none;animation:fadein .45s ease both}
+.screen.on{display:block}
+@keyframes fadein{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+
+/* ---------- 首页 ---------- */
+.hero{padding:64px 0 8px;text-align:center}
+.hero .seal{
+  display:inline-block;width:54px;height:54px;line-height:54px;border-radius:12px;
+  background:var(--green);color:#fffdf6;font-size:30px;font-weight:700;
+  box-shadow:0 6px 16px rgba(36,82,57,.25);margin-bottom:20px;letter-spacing:0;
+}
+.eyebrow{
+  display:inline-block;font-size:13px;letter-spacing:.5em;text-indent:.5em;
+  color:var(--gold-text);border:1px solid var(--gold);border-radius:999px;
+  padding:4px 16px;margin-bottom:18px;background:rgba(255,253,246,.6);
+}
+h1.title{
+  font-size:clamp(34px,8vw,52px);letter-spacing:.12em;font-weight:700;color:var(--ink);
+}
+h1.title .accent{color:var(--green)}
+.question-line{
+  margin-top:14px;font-size:clamp(17px,4.4vw,21px);color:var(--gold-text);letter-spacing:.2em;
+}
+.hero-divider{
+  width:120px;height:1px;margin:26px auto;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);position:relative;
+}
+.hero-divider::after{
+  content:"◆";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  font-size:9px;color:var(--gold);background:var(--paper);padding:0 8px;
+}
+.intro{
+  font-size:15.5px;color:var(--ink-soft);max-width:520px;margin:0 auto;text-align:justify;
+}
+.mystery-line{text-align:center;color:var(--gold-text);font-size:13px;letter-spacing:.15em;margin-top:14px}
+.mystery{margin:26px auto 4px;display:flex;flex-direction:column;align-items:center}
+.mystery .ring{
+  width:116px;height:116px;border-radius:50%;border:1px solid var(--gold);
+  display:flex;align-items:center;justify-content:center;position:relative;
+  background:radial-gradient(circle at 50% 38%,#fffdf6,#f0e7d1);
+  box-shadow:0 10px 28px rgba(60,50,20,.12);
+}
+.mystery .ring::before{
+  content:"";position:absolute;inset:9px;border-radius:50%;
+  border:1px dashed rgba(176,138,62,.6);
+}
+.mystery .ring::after{
+  content:"◆";position:absolute;bottom:-7px;left:50%;transform:translateX(-50%);
+  font-size:11px;color:var(--gold);background:var(--paper);padding:0 7px;
+}
+.mystery .ring span{font-size:42px;color:var(--gold-text);letter-spacing:0;line-height:1}
+.mystery .cap{font-size:12px;color:#a29a83;letter-spacing:.25em;margin-top:16px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:24px 0 30px}
+.chip{
+  font-size:12.5px;color:var(--green-deep);background:var(--green-tint);
+  border:1px solid rgba(47,107,79,.25);border-radius:999px;padding:5px 14px;letter-spacing:.05em;
+}
+.btn{
+  display:block;width:100%;max-width:340px;margin:0 auto;border:none;cursor:pointer;
+  font-family:inherit;font-size:18px;letter-spacing:.35em;text-indent:.35em;
+  padding:16px 20px;border-radius:999px;background:var(--green);color:#fffdf6;
+  box-shadow:0 8px 20px rgba(36,82,57,.28);transition:transform .15s ease,box-shadow .15s ease;
+  min-height:56px;
+}
+.btn:hover{transform:translateY(-2px);box-shadow:0 12px 26px rgba(36,82,57,.32)}
+.btn:active{transform:translateY(0)}
+.btn.ghost{
+  background:transparent;color:var(--green-deep);border:1.5px solid var(--green);
+  box-shadow:none;
+}
+.btn.ghost:hover{background:var(--green-tint)}
+.btn.gold{background:var(--gold);box-shadow:0 8px 20px rgba(176,138,62,.3)}
+.disclaimer{
+  margin:34px auto 0;max-width:520px;font-size:12.5px;color:#98917c;text-align:center;line-height:1.9;
+}
+.hint{
+  text-align:center;font-size:13px;color:var(--ink-soft);margin-top:14px;letter-spacing:.1em;
+}
+
+/* ---------- 答题页 ---------- */
+.quiz-top{position:sticky;top:0;z-index:5;padding:16px 0 10px;background:linear-gradient(var(--paper) 82%,transparent)}
+.quiz-meta{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px}
+.quiz-meta .no{font-size:14px;color:var(--gold-text);letter-spacing:.2em}
+.quiz-meta .theme{font-size:12.5px;color:#a29a83;letter-spacing:.15em}
+.bar{height:6px;border-radius:3px;background:var(--paper-deep);overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--green),#6f9c7f);border-radius:3px;transition:width .35s ease}
+.dots{display:flex;justify-content:center;gap:8px;margin-top:12px;flex-wrap:wrap}
+.dots button{
+  width:30px;height:30px;border-radius:50%;border:1.5px solid #c9c0a4;background:transparent;
+  color:#a89f84;font-size:12px;font-family:inherit;cursor:pointer;line-height:1;
+  transition:all .2s ease;
+}
+.dots button.done{background:var(--green);border-color:var(--green);color:#fffdf6}
+.dots button.cur{border-color:var(--gold);color:var(--gold-text);box-shadow:0 0 0 3px rgba(176,138,62,.18)}
+.dots button.cur.done{background:var(--gold);border-color:var(--gold);color:#fffdf6}
+.qcard{
+  margin-top:26px;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:30px 26px 24px;box-shadow:0 10px 30px rgba(60,50,20,.07);
+  animation:fadein .4s ease both;
+}
+.qcard .tag{font-size:12px;color:#a29a83;letter-spacing:.3em;margin-bottom:12px}
+.qcard h2{font-size:clamp(19px,5vw,23px);line-height:1.65;letter-spacing:.04em;font-weight:700}
+.opts{margin-top:24px;display:grid;gap:12px}
+.opt{
+  display:flex;align-items:center;gap:14px;text-align:left;width:100%;
+  font-family:inherit;font-size:15.5px;color:var(--ink);line-height:1.6;
+  background:#fffef9;border:1.5px solid var(--line);border-radius:14px;
+  padding:14px 16px;cursor:pointer;min-height:56px;transition:all .18s ease;
+}
+.opt .mark{
+  flex:0 0 26px;width:26px;height:26px;border-radius:50%;border:1.5px solid #c9c0a4;
+  display:flex;align-items:center;justify-content:center;font-size:12px;color:#b3aa8d;transition:all .18s ease;
+}
+.opt:hover{border-color:#bfae7e;background:#fffcf2}
+.opt.sel{border-color:var(--green);background:var(--green-tint);box-shadow:0 4px 14px rgba(47,107,79,.12)}
+.opt.sel .mark{background:var(--green);border-color:var(--green);color:#fff}
+.opt.sel .mark::after{content:"✓"}
+.quiz-nav{display:flex;gap:12px;margin-top:26px}
+.quiz-nav .btn{margin:0;flex:1;max-width:none;letter-spacing:.2em;text-indent:.2em;font-size:16px;padding:14px 10px}
+.quiz-nav .btn[disabled]{opacity:.45;cursor:not-allowed;transform:none;box-shadow:none}
+.toast{
+  position:fixed;left:50%;bottom:44px;transform:translateX(-50%) translateY(20px);
+  background:rgba(44,42,34,.92);color:#f6f1e4;font-size:14px;letter-spacing:.08em;
+  padding:12px 22px;border-radius:999px;opacity:0;pointer-events:none;
+  transition:all .3s ease;z-index:99;max-width:86vw;text-align:center;
+}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* ---------- 结果页 ---------- */
+.result-hero{text-align:center;padding-top:44px}
+.result-hero .pre{font-size:14px;letter-spacing:.5em;text-indent:.5em;color:var(--gold-text);margin-bottom:20px}
+.result-art{width:150px;height:150px;margin:0 auto 6px;display:block;animation:glow 3.5s ease-in-out infinite alternate}
+@keyframes glow{from{filter:drop-shadow(0 6px 14px rgba(60,50,20,.15))}to{filter:drop-shadow(0 10px 22px rgba(60,50,20,.28))}}
+.vname{font-size:clamp(38px,9vw,54px);font-weight:700;letter-spacing:.18em;margin-top:8px}
+.vsub{font-size:14px;color:var(--ink-soft);letter-spacing:.35em;margin-top:6px}
+.verdict{
+  margin:22px auto 0;max-width:420px;background:var(--card);border:1px solid var(--line);
+  border-radius:var(--radius);padding:18px 22px;box-shadow:0 8px 24px rgba(60,50,20,.08);
+}
+.verdict .label{font-size:11.5px;letter-spacing:.4em;color:#a29a83;margin-bottom:6px}
+.verdict p{font-size:17px;color:var(--green-deep);letter-spacing:.12em;font-weight:700}
+.vtags{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:18px}
+.vtags span{font-size:12.5px;color:var(--gold-text);border:1px solid rgba(176,138,62,.5);border-radius:999px;padding:4px 14px;background:rgba(255,253,246,.7)}
+.sec{margin-top:40px}
+.sec-h{display:flex;align-items:center;gap:14px;margin-bottom:16px}
+.sec-h .zh{font-size:19px;font-weight:700;letter-spacing:.25em}
+.sec-h .line{flex:1;height:1px;background:linear-gradient(90deg,var(--line),transparent)}
+.sec .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:22px 22px;box-shadow:0 6px 18px rgba(60,50,20,.06)}
+.sec .card p{font-size:15px;color:#4c483c;margin-bottom:12px;text-align:justify}
+.sec .card p:last-child{margin-bottom:0}
+.dims{display:grid;gap:16px}
+.dim .dim-top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px}
+.dim .dim-top b{font-size:15px;letter-spacing:.15em}
+.dim .dim-top i{font-style:normal;font-size:12.5px;color:var(--gold-text)}
+.dim .track{height:10px;border-radius:5px;background:var(--paper-deep);overflow:hidden}
+.dim .track i{display:block;height:100%;width:0;border-radius:5px;background:linear-gradient(90deg,#6f9c7f,var(--green));transition:width 1s ease}
+.dim .dim-note{font-size:13px;color:var(--ink-soft);margin-top:6px}
+.aux{display:flex;gap:18px;align-items:center}
+.aux svg{width:76px;height:76px;flex:0 0 76px}
+.aux .aux-t b{display:block;font-size:17px;letter-spacing:.2em;margin-bottom:4px}
+.aux .aux-t p{font-size:14px;color:var(--ink-soft)}
+.advice{list-style:none;display:grid;gap:12px}
+.advice li{
+  display:flex;gap:12px;align-items:flex-start;background:var(--card);
+  border:1px solid var(--line);border-radius:14px;padding:14px 16px;font-size:15px;color:#4c483c;
+}
+.advice li .n{
+  flex:0 0 24px;width:24px;height:24px;margin-top:2px;border-radius:50%;background:var(--green-tint);
+  color:var(--green-deep);font-size:12.5px;display:flex;align-items:center;justify-content:center;border:1px solid rgba(47,107,79,.3);
+}
+.share-box{
+  background:linear-gradient(160deg,#fffdf6,#f3ecd9);border:1px dashed var(--gold);border-radius:var(--radius);
+  padding:20px;font-size:14px;color:#5b5545;white-space:pre-wrap;line-height:1.9;
+}
+.verdict .state{font-size:12.5px;color:var(--gold-text);letter-spacing:.2em;margin-top:10px;font-weight:400}
+.sign{
+  font-size:14.5px;color:#4c483c;background:var(--green-tint);
+  border-left:3px solid var(--green);padding:12px 16px;border-radius:0 10px 10px 0;
+  margin-bottom:20px;line-height:1.85;
+}
+.resos{display:grid;gap:13px}
+.reso .reso-top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:5px}
+.reso .reso-top span{font-size:14px;letter-spacing:.15em}
+.reso .reso-top i{font-style:normal;font-size:12.5px;color:var(--ink-soft)}
+.reso .track{height:8px;border-radius:4px;background:var(--paper-deep);overflow:hidden}
+.reso .track i{display:block;height:100%;width:0;border-radius:4px;background:linear-gradient(90deg,#a9c2b0,#5d8f70);transition:width 1s ease}
+.reso.lead .track i{background:linear-gradient(90deg,#e0c485,var(--gold))}
+.reso.lead .reso-top span{color:var(--gold-text);font-weight:700}
+.reso em{
+  font-style:normal;font-size:11px;color:var(--gold-text);letter-spacing:.05em;
+  border:1px solid rgba(176,138,62,.55);border-radius:999px;padding:1px 8px;margin-left:8px;
+}
+.result-actions{display:flex;flex-direction:column;gap:12px;margin-top:36px}
+.text-link{
+  display:block;text-align:center;background:none;border:none;font-family:inherit;
+  color:var(--ink-soft);font-size:13.5px;letter-spacing:.15em;text-decoration:underline;
+  text-underline-offset:5px;cursor:pointer;padding:10px;min-height:44px;
+}
+.quick-finish{
+  display:block;margin:16px auto 0;background:none;border:none;font-family:inherit;
+  color:var(--green-deep);font-size:13.5px;letter-spacing:.12em;cursor:pointer;
+  text-decoration:underline;text-underline-offset:5px;padding:8px 14px;min-height:44px;
+}
+.foot-note{margin-top:30px;font-size:12.5px;color:#98917c;text-align:center;line-height:2}
+@media (max-width:480px){
+  #app{padding:0 16px 48px}
+  .qcard{padding:24px 18px 20px}
+  .opt{font-size:14.5px;padding:12px 14px}
+  .aux{flex-direction:column;text-align:center}
+  .hero{padding-top:44px}
+}
+</style>
+</head>
+<body>
+<!-- 原创器物插画（矢量线稿） -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="ic-chazhan" viewBox="0 0 120 120">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M48 16 q7 9 0 18 q-7 9 0 18" opacity=".55"/>
+        <path d="M70 12 q7 9 0 18 q-7 9 0 18" opacity=".55"/>
+        <path d="M26 58 h68 c-2 20-15 34-34 34 c-19 0-32-14-34-34 Z"/>
+        <path d="M34 58 h52" stroke-dasharray="2 6" opacity=".6"/>
+        <path d="M20 96 h80" />
+        <path d="M30 104 h60" opacity=".5"/>
+      </g>
+    </symbol>
+    <symbol id="ic-guyan" viewBox="0 0 120 120">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="18" y="56" width="84" height="30" rx="8"/>
+        <ellipse cx="56" cy="66" rx="24" ry="7" opacity=".8"/>
+        <ellipse cx="80" cy="40" rx="11" ry="5.5"/>
+        <path d="M80 46 v6"/>
+        <path d="M30 96 h60" opacity=".5"/>
+      </g>
+    </symbol>
+    <symbol id="ic-tuanshan" viewBox="0 0 120 120">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="60" cy="44" r="28"/>
+        <circle cx="60" cy="44" r="5"/>
+        <path d="M60 39 q10 -12 20 -2" opacity=".7"/>
+        <path d="M60 49 q-10 12 -20 2" opacity=".7"/>
+        <path d="M55 39 q-8 -10 2 -16" opacity=".5"/>
+        <path d="M60 72 v22"/>
+        <path d="M54 94 q6 4 12 0" opacity=".8"/>
+        <path d="M57 98 l-3 12 M60 98 v13 M63 98 l3 12" opacity=".7"/>
+      </g>
+    </symbol>
+    <symbol id="ic-fengling" viewBox="0 0 120 120">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M60 10 v10"/>
+        <path d="M42 46 a18 18 0 0 1 36 0 v6 h-36 Z"/>
+        <circle cx="60" cy="58" r="3.5"/>
+        <path d="M52 62 l-5 26 M60 62 v32 M68 62 l5 26"/>
+        <path d="M30 30 q6 -6 12 -3 M90 26 q-6 -6 -12 -3" opacity=".5"/>
+      </g>
+    </symbol>
+    <symbol id="ic-yukou" viewBox="0 0 120 120">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="60" cy="62" r="26"/>
+        <circle cx="60" cy="62" r="11"/>
+        <path d="M60 36 V20"/>
+        <path d="M60 20 q-10 -10 -18 -2 q-6 8 4 12" opacity=".7"/>
+        <path d="M60 20 q10 -10 18 -2 q6 8 -4 12" opacity=".7"/>
+        <path d="M50 88 l-4 14 M60 88 v16 M70 88 l4 14" opacity=".6"/>
+      </g>
+    </symbol>
+    <symbol id="ic-zhutai" viewBox="0 0 120 120">
+      <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M60 14 q10 13 0 24 q-10 -11 0 -24 Z"/>
+        <path d="M60 44 v6"/>
+        <rect x="50" y="50" width="20" height="38" rx="4"/>
+        <path d="M50 62 q-4 10 2 12" opacity=".6"/>
+        <path d="M38 88 h44"/>
+        <path d="M44 96 h32" opacity=".5"/>
+        <path d="M84 34 l6 -6 M88 46 l8 -2 M36 34 l-6 -6 M32 46 l-8 -2" opacity=".5"/>
+      </g>
+    </symbol>
+  </defs>
+</svg>
+
+<div id="app">
+
+  <!-- ===== 首页 ===== -->
+  <section id="page-home" class="screen on">
+    <div class="hero">
+      <span class="seal">器</span>
+      <div><span class="eyebrow">东方器灵自测</span></div>
+      <h1 class="title">本命<span class="accent">器物</span></h1>
+      <p class="question-line">哪一件器物，和你的灵魂同频？</p>
+      <div class="hero-divider"></div>
+      <p class="intro">
+        有些器物，见第一眼就觉得面熟，像在某个旧梦里一起待过。十二道小题，不问对错，只问你伸手时会先碰到哪一件——那件器物里，藏着你此刻的频率。
+      </p>
+      <p class="intro mystery-line">谜底留到最后一页，开头不剧透。</p>
+      <div class="mystery">
+        <div class="ring"><span>封</span></div>
+        <p class="cap">器 物 未 启 · 待 你 来 认 领</p>
+      </div>
+      <div class="chips">
+        <span class="chip">题库 150 题</span>
+        <span class="chip">随机抽 12 题</span>
+        <span class="chip">结果由作答计算</span>
+        <span class="chip">约 2 分钟</span>
+      </div>
+      <button class="btn" id="btn-start">启封测试</button>
+      <p class="hint">支持返回修改 · 未答会提醒 · 可反复重测</p>
+      <p class="disclaimer">
+        本页面为原创趣味自评测试，仅供自我觉察与娱乐参考，不构成任何专业心理测评、诊断或建议。<br>
+        请放松作答，答案没有好坏——器物无语，人心自明。
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== 答题页 ===== -->
+  <section id="page-quiz" class="screen">
+    <div class="quiz-top">
+      <div class="quiz-meta">
+        <span class="no" id="q-no">第 1 / 12 题</span>
+        <span class="theme" id="q-theme"></span>
+      </div>
+      <div class="bar"><i id="q-bar"></i></div>
+      <div class="dots" id="q-dots"></div>
+    </div>
+    <div class="qcard" id="q-card">
+      <p class="tag" id="q-tag"></p>
+      <h2 id="q-text"></h2>
+      <div class="opts" id="q-opts"></div>
+    </div>
+    <div class="quiz-nav">
+      <button class="btn ghost" id="btn-prev">上一题</button>
+      <button class="btn" id="btn-next">下一题</button>
+    </div>
+    <button class="quick-finish" id="btn-quick">已答完，直接看结果 →</button>
+    <p class="hint">原创趣味自评 · 仅供娱乐与自我觉察参考 · 答案没有好坏</p>
+  </section>
+
+  <!-- ===== 结果页 ===== -->
+  <section id="page-result" class="screen">
+    <div class="result-hero">
+      <p class="pre">你的本命器物是</p>
+      <svg class="result-art" id="r-art"><use id="r-use" href="#ic-chazhan"/></svg>
+      <div class="vname" id="r-name"></div>
+      <div class="vsub" id="r-sub"></div>
+      <div class="verdict">
+        <p class="label">一 句 判 词</p>
+        <p id="r-verdict"></p>
+        <p class="state" id="r-state"></p>
+      </div>
+      <div class="vtags" id="r-tags"></div>
+    </div>
+
+    <div class="sec">
+      <div class="sec-h"><span class="zh">灵魂同频</span><span class="line"></span></div>
+      <div class="card" id="r-desc"></div>
+    </div>
+
+    <div class="sec">
+      <div class="sec-h"><span class="zh">气韵四维</span><span class="line"></span></div>
+      <div class="card dims" id="r-dims"></div>
+    </div>
+
+    <div class="sec">
+      <div class="sec-h"><span class="zh">本轮六器共鸣</span><span class="line"></span></div>
+      <div class="card">
+        <p class="sign" id="r-sign"></p>
+        <div class="resos" id="r-resos"></div>
+      </div>
+    </div>
+
+    <div class="sec">
+      <div class="sec-h"><span class="zh">辅器相伴</span><span class="line"></span></div>
+      <div class="card"><div class="aux" id="r-aux"></div></div>
+    </div>
+
+    <div class="sec">
+      <div class="sec-h"><span class="zh">行动建议</span><span class="line"></span></div>
+      <ul class="advice" id="r-advice"></ul>
+    </div>
+
+    <div class="sec">
+      <div class="sec-h"><span class="zh">分享文案</span><span class="line"></span></div>
+      <div class="share-box" id="r-share"></div>
+    </div>
+
+    <div class="result-actions">
+      <button class="btn gold" id="btn-copy">复制分享文案</button>
+      <button class="btn" id="btn-edit">返回修改答案 · 重算结果</button>
+      <button class="btn ghost" id="btn-retry">再测一次（换一组题）</button>
+      <button class="text-link" id="btn-home">回到首页</button>
+    </div>
+    <p class="foot-note">
+      本页所有数字都由你这一次的选择实时算出，不是预设模板，也不是随机出的结果。<br>
+      更换题目或改动任意一题的答案，六器共鸣与本轮手签都会跟着变。<br>
+      本测试为原创趣味自评，仅作自我觉察与娱乐参考，不代表任何专业心理测评或诊断。
+    </p>
+  </section>
+
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+/* ================= 题库（150 题） =================
+   每题 4 个选项，选项计分格式："器物:分数" 可多计分，逗号分隔
+   器物代号 cz茶盏 yan古砚 shan团扇 feng风铃 yu玉扣 zhu烛台 */
+/*QB-START*/
+const QB=[
+/* 生活方式 */
+["周末醒来的最佳打开方式是——",[["慢慢煮一壶茶，把时间泡开","cz:3"],["不慌不忙读几页书","yan:3"],["把上周的计划一一兑现","yu:3"],["约人吃顿热闹的早茶","zhu:3"]]],
+["你的桌面更接近哪一种",[["越素越好，只留必需","yan:3"],["有点烟火气：杯子、茶罐、小零食","cz:3"],["摆件讲究，成套的雅致","shan:3"],["零食茶点常备，随时能待客","zhu:3"]]],
+["口渴时你伸手拿的是",[["温热的茶","cz:3"],["白水或美式，越简单越好","yan:3"],["想试试没喝过的限定款","feng:3"],["甜的暖的都想来一口","zhu:3"]]],
+["出门旅行你通常是",[["做攻略、管行程的那个人","yu:3"],["说走就走的发起人","feng:3"],["负责把风景都拍下来的那个人","shan:3"],["负责活跃气氛的那个人","zhu:3"]]],
+["加班后的深夜，你最想要",[["一口热的，缓缓再睡","cz:3"],["一个人安静待一会儿","yan:3"],["按部就班收尾，明天的事不慌","yu:3"],["给自己点份好吃的","zhu:3"]]],
+["家里最离不开的一件东西是",[["用了很多年也舍不得换的旧物","yu:3"],["一盏暖光的小灯","zhu:3"],["一件好看但没什么用的摆件","shan:3"],["一扇常常开着的窗","feng:3"]]],
+["你的作息更像",[["规律如钟，到点就睡","yan:3"],["说几点就几点，说到做到","yu:3"],["随季节调节，冬天冬眠夏天夜猫","cz:3"],["灵感来了就想熬夜","feng:3"]]],
+["朋友来家里，你的第一反应",[["先烧水泡茶","cz:3"],["想大展身手做一桌菜","zhu:3"],["换上好看的杯垫和餐布","shan:3"],["沏好茶就回去忙自己的","yan:3"]]],
+["收到礼物时你更在意",[["那份被人惦记的心意","zhu:3"],["礼物的审美在不在我的点上","shan:3"],["实不实用、耐不耐看","yu:3"],["有没有意想不到的巧思","feng:3"]]],
+["你的手机相册里最多的是",[["光影、天空和花草","shan:3"],["截图和聊天记录","feng:3"],["聚餐美食和大家的合照","zhu:3"],["几乎不拍照，都在脑子里","yan:3"]]],
+["空闲半天，你最想去",[["安静的美术馆或书店","yan:3"],["有点年头的茶馆","cz:3"],["把家里收拾得妥妥帖帖","yu:3"],["逛吃逛吃的小街","zhu:3"]]],
+["搬新家时你会最先安顿",[["旧物一件件归位","yu:3"],["灯光和氛围","zhu:3"],["茶具水壶先落位","cz:3"],["挑一幅挂画","shan:3"]]],
+["通勤路上你更常",[["顺路帮同事朋友捎上早餐","zhu:3"],["总走同一条最稳的路","yu:3"],["闭目养神","yan:3"],["观察窗外的光线","shan:3"]]],
+["一个人的晚餐你会",[["也好好摆盘，配杯热的","cz:3"],["顺便和亲友连线吃饭","zhu:3"],["边吃边想事情","yan:3"],["定时定量，规律得像闹钟","yu:3"]]],
+["假期的最后一天你倾向于",[["提前把一切收拾好","yu:3"],["再约人聚一场","zhu:3"],["把节奏放慢，缓过来","cz:3"],["抓住尾巴再痛快一次","feng:3"]]],
+/* 审美偏好 */
+["最打动你的一组颜色是",[["青玉与老铜的沉色","yu:3"],["墨色与青灰","yan:3"],["藕荷与月白","shan:3"],["灯笼与灯会的暖红","zhu:3"]]],
+["摸到哪种材质你会多停留一秒",[["温润的玉与木","yu:3"],["粗陶的颗粒肌理","cz:3"],["半透的绢纱","shan:3"],["红木与黄铜的厚重","zhu:3"]]],
+["更合你眼缘的纹样是",[["素面无纹","yan:3"],["缠枝莲","shan:3"],["流云纹","feng:3"],["团花","zhu:3"]]],
+["看一幅画时你的眼睛先落在",[["留白处","yan:3"],["经得起岁月的部分","yu:3"],["人物的衣袂","shan:3"],["市井的烟火人声","zhu:3"]]],
+["首饰偏好上你会选",[["一枚素圈玉扣","yu:3"],["温润的木质手串","cz:3"],["精巧的流苏步摇","shan:3"],["会响的小铃铛","feng:3"]]],
+["房间里的光你偏爱",[["暖黄的光晕","zhu:3"],["清晨斜进来的自然光","cz:3"],["一盏够用就好的台灯","yan:3"],["纱帘滤过的柔光","shan:3"]]],
+["对写字这件事你",[["喜欢工整的小楷","yan:3"],["逢年过节给亲友写满祝福","zhu:3"],["讲究好看的字配信纸","shan:3"],["落笔前先打好腹稿","yu:3"]]],
+["挑衣服你最先看",[["版型与线条","shan:3"],["面料亲不亲肤","cz:3"],["有没有让人记住的细节","feng:3"],["耐不耐看、禁不禁穿","yu:3"]]],
+["家里那面白墙你会",[["挂一幅字画","shan:3"],["什么也不挂，留白","yan:3"],["挂一串暖色的小灯","zhu:3"],["贴满票根和明信片","feng:3"]]],
+["一只杯子吸引你的点通常是",[["握感温顺","cz:3"],["器形克制","yan:3"],["釉色好看","shan:3"],["够大气，请客拿得出手","zhu:3"]]],
+["秋天的颜色里你认领",[["茶汤的暖褐","cz:3"],["柿子红","zhu:3"],["桂花黄","shan:3"],["秋空的蓝","feng:3"]]],
+["你喜欢的旧是",[["传了两代人的物件","yu:3"],["泛黄的书页","yan:3"],["有包浆的茶台","cz:3"],["旧货市场淘来的怪东西","feng:3"]]],
+["理想的手机壁纸是",[["家人朋友的合照","zhu:3"],["一枝花的工笔","shan:3"],["纯色或极简线条","yan:3"],["一只冒着热气的杯子","cz:3"]]],
+["面对俗气但快乐的东西你",[["坦然喜欢，快乐要紧","zhu:3"],["好奇心上来了也想试","feng:3"],["笑一笑但不太感冒","cz:3"],["摇头走开","yan:3"]]],
+["透明与朦胧之间你选",[["朦胧，隔一层纱最有味道","shan:3"],["清楚明白","yan:3"],["半透的雾面刚好","cz:3"],["像玉，半透不透刚刚好","yu:3"]]],
+/* 性格自画像 */
+["朋友形容你，最接近哪句",[["温和好相处","cz:3"],["安静但有主意","yan:3"],["有品位、懂生活","shan:3"],["走到哪都自带热乎气","zhu:3"]]],
+["你的情绪通常",[["来得快去得快，像一阵风","feng:3"],["慢慢消化","cz:3"],["自己想通了才算完","yan:3"],["压得住，但记得久","yu:3"]]],
+["计划被突然打乱，你",[["顺势换条路线也挺好玩","feng:3"],["心里咯噔一下但能接住","yu:3"],["影响不大，随遇而安","cz:3"],["需要独处缓一缓","yan:3"]]],
+["你的表达风格是",[["先做后说，说了就做到","yu:3"],["精简，只说重点","yan:3"],["含蓄，意思藏在意境里","shan:3"],["爱给人打气，张罗气氛一绝","zhu:3"]]],
+["独处对你来说是",[["充电，越独越有电","yan:3"],["舒服，但也不排斥人","cz:3"],["更喜欢有人在的热乎气","zhu:3"],["要美美的才配叫独处","shan:3"]]],
+["遇到事情你的第一反应是",[["先想最坏结果和兜底","yu:3"],["先照顾大家的感受","cz:3"],["先看逻辑对不对","yan:3"],["先看有没有更好玩的可能","feng:3"]]],
+["你的坚持更像",[["水滴石穿","yu:3"],["十年磨一剑","yan:3"],["细水长流的日常习惯","cz:3"],["为了让家人过得更好而坚持","zhu:3"]]],
+["深夜情绪上头时你会",[["和自己对谈，写下几行字","yan:3"],["泡个热水澡早点睡","cz:3"],["找人倾诉一通","feng:3"],["聊着聊着反过来安慰了对方","zhu:3"]]],
+["你的好奇心总是指向",[["冷知识和新鲜事","feng:3"],["原理和来龙去脉","yan:3"],["美的事物背后的故事","shan:3"],["老物件背后的来历","yu:3"]]],
+["被夸奖时你会",[["不好意思，赶紧回夸","cz:3"],["微笑收下，心里开花","shan:3"],["淡淡道谢，然后记很久","yu:3"],["大家一起被夸才叫开心","zhu:3"]]],
+["如果你是水，更像哪种",[["温泉","cz:3"],["深潭","yan:3"],["映着月亮的浅溪","shan:3"],["温润养人的井水","yu:3"]]],
+["面对告别你",[["念旧，相关的都留着","yu:3"],["有遗憾但真心祝福","cz:3"],["走之前非得再聚一顿","zhu:3"],["体面地把回忆收好","shan:3"]]],
+["你的幽默是哪种",[["梗多、反应快","feng:3"],["温柔的自嘲","cz:3"],["冷不丁一句高级冷笑话","yan:3"],["气氛担当，负责热场","zhu:3"]]],
+["你更怕哪种状态",[["被打扰到没法思考","yan:3"],["自己说话不算数","yu:3"],["一成不变","feng:3"],["热闹散场后的冷清","zhu:3"]]],
+["别人向你求助时你",[["几乎不会拒绝","cz:3"],["比对方还上心","zhu:3"],["先判断值不值得、怎么帮","yan:3"],["答应了就一定办到","yu:3"]]],
+/* 社交关系 */
+["聚会里的你通常是",[["照顾每个人的那一个","zhu:3"],["默默把细节都安排妥当","yu:3"],["安静但让人想认识的那一个","shan:3"],["倾听者","cz:3"]]],
+["你的消息风格更像",[["逢年过节必发暖心祝福","zhu:3"],["温和，总带语气词","cz:3"],["言简意赅","yan:3"],["措辞讲究","shan:3"]]],
+["你心中的朋友是",[["少而深，经得起时间","yu:3"],["广而暖，谁都有份","zhu:3"],["三两知己，常来常往","cz:3"],["五湖四海皆可聊","feng:3"]]],
+["吵架之后你一般",[["先低头但心里委屈","cz:3"],["冷静之后认真谈","yu:3"],["给彼此空间","yan:3"],["睡一觉就忘了","feng:3"]]],
+["记住一位朋友的方式是",[["记住口味和习惯","cz:3"],["记住生日和重要日子","zhu:3"],["记得一起看过的展和风景","shan:3"],["记得聊过的怪话题","feng:3"]]],
+["哪句话你最愿意听到",[["有你在就很安心","zhu:3"],["和你相处很舒服","cz:3"],["听你讲真的有收获","yan:3"],["你真有品位","shan:3"]]],
+["进入新环境的第一天你",[["已经开始帮大家张罗了","zhu:3"],["被人记住了名字","cz:3"],["先安静观察全局","yan:3"],["被夸了气质","shan:3"]]],
+["群聊里的你",[["长期潜水，突然冒泡炸场","feng:3"],["常驻暖场","zhu:3"],["偶尔温柔发言","cz:3"],["静默观看","yan:3"]]],
+["相处模式里你更像",[["陪伴型，人在就好","cz:3"],["需要空间型","yan:3"],["细水长流型","yu:3"],["仪式感满满型","shan:3"]]],
+["朋友心情不好来找你，你会",[["煮茶陪伴，不说教","cz:3"],["陪着一起哭骂再劝","zhu:3"],["讲段子把人哄笑","feng:3"],["带出门看展散心","shan:3"]]],
+["你的社交电量",[["社交完需要独处回血","yan:3"],["越聚越旺","zhu:3"],["看对象，对的人越多越旺","cz:3"],["见谁都不太费电","feng:3"]]],
+["收到突然的邀约你",[["兴致来了就走","feng:3"],["舍不得拒绝热闹","zhu:3"],["看看那天累不累","cz:3"],["有安排就温柔婉拒","yu:3"]]],
+["你最珍视的关系特质是",[["可靠守信","yu:3"],["舒服不累","cz:3"],["有趣同频","feng:3"],["审美一致","shan:3"]]],
+["在众人面前出丑，你",[["自黑化解，笑翻全场","feng:3"],["干脆顺势给大家添个乐子","zhu:3"],["恨不得消失并连夜复盘","yan:3"],["保持体面的微笑","shan:3"]]],
+["老朋友多久不联系都不生分，靠的是",[["彼此心里笃定","yu:3"],["一开口就回到从前","cz:3"],["随时接得上新梗","feng:3"],["共同的热闹回忆","zhu:3"]]],
+/* 情绪压力 */
+["压力大时你的第一反应",[["关掉所有通知","yan:3"],["想吃口热的","cz:3"],["出门吹吹风","feng:3"],["找人说说","zhu:3"]]],
+["哪种方式恢复能量最快",[["一杯热茶一个热水澡","cz:3"],["一段完全的独处","yan:3"],["一场说走就走的短途","feng:3"],["一顿热闹的饭","zhu:3"]]],
+["你的坏情绪通常藏在",[["平静的语气里","yu:3"],["忙碌起来的手上","cz:3"],["精心修饰的日常里","shan:3"],["深夜的自省里","yan:3"]]],
+["你安慰自己的方式是",[["善待身体","cz:3"],["非想通不可","yan:3"],["换个环境","feng:3"],["去温暖别人，自己也就好了","zhu:3"]]],
+["心里发紧的时候，多半是因为",[["承诺与责任","yu:3"],["意义感","yan:3"],["被困住的感觉","feng:3"],["现实配不上心里的期待","shan:3"]]],
+["面对别人的情绪你",[["很容易被感染","cz:3"],["天生想接住","zhu:3"],["保持边界","yan:3"],["先讲道理或讲笑话","feng:3"]]],
+["下雨天你会",[["喜欢檐下听雨煮茶","cz:3"],["喜欢雨夜里亮着的万家灯火","zhu:3"],["喜欢雨夜格外安眠","yan:3"],["喜欢雨中朦胧的景致","shan:3"]]],
+["情绪稳定的人在你眼里",[["靠得住","yu:3"],["那是修炼的结果","yan:3"],["让人放松","cz:3"],["有点羡慕","feng:3"]]],
+["对过去的事你",[["收进心里的匣子","yu:3"],["慢慢淡化它","cz:3"],["说出来就翻篇","feng:3"],["想明白了才放下","yan:3"]]],
+["一天里最治愈你的时刻",[["晨起第一口热饮","cz:3"],["深夜独处的安静","yan:3"],["黄昏的光","shan:3"],["饭点厨房的锅铲动静","zhu:3"]]],
+["哪个瞬间最让你绷不住",[["感觉付出没被看见","zhu:3"],["计划落空","yu:3"],["被限制自由","feng:3"],["被误解","yan:3"]]],
+["你的自我修复速度",[["找朋友聚一场就好得快","zhu:3"],["慢慢地好起来","cz:3"],["时间长了自然平","yu:3"],["想通了才算真的好","yan:3"]]],
+["你的安全感更多来自",[["一切尽在掌握","yu:3"],["内在秩序","yan:3"],["稳定的日常","cz:3"],["身边有人","zhu:3"]]],
+["排解无聊，你的开关是",[["把搁置的事一件件做完","yu:3"],["给自己煮点什么","cz:3"],["读点难懂的东西","yan:3"],["张罗一场小聚","zhu:3"]]],
+/* 自然季节 */
+["你最想住在哪里",[["南方小城的巷子里","cz:3"],["山中小住","yan:3"],["园林旁边","shan:3"],["离老家不远的小城","yu:3"]]],
+["最有感觉的节气画面",[["围炉煮茶的冬","cz:3"],["张灯结彩的年","zhu:3"],["落满桂花的秋","shan:3"],["蝉鸣晚风的夏夜","feng:3"]]],
+["云的形态里你偏爱",[["像灯会一样热烈的火烧云","zhu:3"],["山间层叠的雾","yan:3"],["天边烧起的晚霞","shan:3"],["炊烟一样柔软的云","cz:3"]]],
+["做一棵树你想做",[["常青常在的老樟树","yu:3"],["开花结果的果树","cz:3"],["四季不改的松柏","yan:3"],["风一吹就落花的树","feng:3"]]],
+["水的声音里最治愈你",[["壶中将沸未沸","cz:3"],["山涧入潭的深水声","yan:3"],["溪水绕过石头的声音","shan:3"],["深井打水的声音","yu:3"]]],
+["你对月亮的态度",[["月下饮茶最好","cz:3"],["偏爱新月的安静","yan:3"],["中秋要点灯团圆","zhu:3"],["想追着月亮散步","feng:3"]]],
+["夏天最好的部分是",[["傍晚的风和冰汽水","feng:3"],["井水湃过的西瓜","cz:3"],["长昼之后的安静夜读","yan:3"],["夜市的人间烟火","zhu:3"]]],
+["冬天的仪式感是",[["围炉煮茶","cz:3"],["一串小灯把屋子焐暖","zhu:3"],["隔窗看雪","shan:3"],["去踩雪地第一行脚印","feng:3"]]],
+["你和风的关系",[["想追着它跑","feng:3"],["喜欢微风拂面","cz:3"],["喜欢衣袂被吹起的瞬间","shan:3"],["默默关窗，怕乱","yan:3"]]],
+["你的植物缘",[["养了多年的绿萝","yu:3"],["一盆薄荷，随手掐来泡水","cz:3"],["好养的空气凤梨","feng:3"],["一枝应季的插花","shan:3"]]],
+["最想收藏的一种自然之声",[["深山古寺的钟声","yu:3"],["松涛","yan:3"],["落雪的声音","shan:3"],["溪流","cz:3"]]],
+["天气对你的影响",[["很大，晴天心也晴","feng:3"],["几乎不受影响，自有节奏","yu:3"],["不大，内心自有恒定","yan:3"],["雨天反而更精致","shan:3"]]],
+["你喜欢的路是",[["人声鼎沸的老街","zhu:3"],["铺满落叶的旧巷","cz:3"],["有拱桥回廊的园路","shan:3"],["熟悉的直路","yu:3"]]],
+["日出与日落你选",[["日落，收束的余晖","shan:3"],["都不追，日常最踏实","yu:3"],["都行，配茶最好","cz:3"],["宁可看云","yan:3"]]],
+["面对一片湖你会",[["煮水烹茶，对坐湖光","cz:3"],["临湖静坐，放空","yan:3"],["约一群人湖边野餐","zhu:3"],["把湖光山色看进眼里带走","shan:3"]]],
+/* 声音感官 */
+["清晨唤醒你最好的方式",[["热饮的香气","cz:3"],["窗外的鸟鸣","feng:3"],["窗缝里的一线光","yan:3"],["屋子里的暖意","zhu:3"]]],
+["记忆里最暖的气味",[["柴火与茶","cz:3"],["旧书页","yan:3"],["家常饭菜香","zhu:3"],["雨后的青草","feng:3"]]],
+["听到风铃你会",[["心里跟着清脆起来","feng:3"],["觉得宁静","cz:3"],["想起某个夏天","shan:3"],["想起某个老屋檐","yu:3"]]],
+["你对声音",[["很敏感，细小的声音都入耳","feng:3"],["偏爱有人声与笑闹的热闹","zhu:3"],["怕吵，一心求静","yan:3"],["喜欢有氛围的白噪音","shan:3"]]],
+["好看的器物拿在手里你会",[["反复端详，舍不得用","shan:3"],["想用它盛点什么","cz:3"],["先掂分量、看做工","yan:3"],["默默用起来，越用越合手","yu:3"]]],
+["味觉里你偏爱",[["清淡回甘","cz:3"],["清苦有韵","yan:3"],["酸甜跳跃","feng:3"],["滋味浓烈","zhu:3"]]],
+["触感上你更爱",[["温润如脂","cz:3"],["温凉沉静的玉感","yu:3"],["轻而脆的","feng:3"],["柔软起绒的","shan:3"]]],
+["哪种光最动人",[["烛火摇曳","zhu:3"],["晨光斜进茶席","cz:3"],["一盏孤灯","yan:3"],["帘影筛落的碎光","shan:3"]]],
+["你的嗅觉记忆",[["最记得旧物晒过太阳的味道","yu:3"],["一闻到饭菜香就想起家里人","zhu:3"],["没什么嗅觉记忆","yan:3"],["会为好闻的香味买单","shan:3"]]],
+["沉默在你的生活里是",[["必需品","yan:3"],["舒适的背景音","cz:3"],["刚好用来把事情想周全","yu:3"],["想配点音乐的留白","shan:3"]]],
+["晚风、炉火、月色、琴声，带走一样",[["炉火","cz:3"],["月色","shan:3"],["满屋的人声与热气","zhu:3"],["一件用旧的贴身之物","yu:3"]]],
+["你拍照时最常对准",[["光影和构图","shan:3"],["老物件和它们的岁月","yu:3"],["人和瞬间","feng:3"],["很少拍","yan:3"]]],
+["判断一家好店的标准是",[["味道熨帖","cz:3"],["安静不吵","yan:3"],["陈设有品","shan:3"],["人气够旺、够热闹","zhu:3"]]],
+/* 时空假想 */
+["如果回到古代，你想做",[["书院里的读书人","yan:3"],["茶寮掌柜","cz:3"],["游历四方的画师","shan:3"],["稳坐商号的大掌柜","yu:3"]]],
+["想拥有一项古典技艺",[["制墨或刻砚","yan:3"],["焙茶","cz:3"],["刺绣缂丝","shan:3"],["琢玉","yu:3"]]],
+["江湖上你的名声更接近",[["及时雨，够仗义","zhu:3"],["温润先生","cz:3"],["神秘隐士","yan:3"],["消息灵通的百晓生","feng:3"]]],
+["古人雅集你会加入哪一席",[["茶席","cz:3"],["棋席","yan:3"],["曲水流觞的吟诗席","shan:3"],["掌管礼数安排的那一席","yu:3"]]],
+["写一封手写信你会",[["认真写好，封好保存","yu:3"],["附一小包茶叶寄出","cz:3"],["信纸都要挑最好看的","shan:3"],["写得飞快，废话连篇但有趣","feng:3"]]],
+["若有一座小院，一定要有",[["一方茶灶","cz:3"],["一片竹林","yan:3"],["一架蔷薇","shan:3"],["一口老井","yu:3"]]],
+["古镇的夜晚你更想",[["提灯逛夜市","zhu:3"],["蹭一碗热茶","cz:3"],["看灯如昼的画舫","shan:3"],["听巷子里的传闻轶事","feng:3"]]],
+["你的书房匾额会写",[["守拙","yan:3"],["吃茶去","cz:3"],["可以清心","shan:3"],["守常","yu:3"]]],
+["择一城终老，你先看",[["是否安稳长久","yu:3"],["是否有趣新鲜","feng:3"],["节奏慢不慢","cz:3"],["城市美不美","shan:3"]]],
+["若能学一样乐器",[["古琴","yan:3"],["琵琶","shan:3"],["唢呐，一响全场我最热闹","zhu:3"],["不学了，听煮水声就很好","cz:3"]]],
+["你的侠气体现在",[["一诺千金","yu:3"],["路见不平搭把手","zhu:3"],["来去自由","feng:3"],["温柔接住每一个人","cz:3"]]],
+["古画里你多半出现在",[["焚香读书的角落","yan:3"],["煮茶听雪的窗边","cz:3"],["凭栏望景的地方","shan:3"],["在廊下保养旧物","yu:3"]]],
+["一盏灯为你留着，你会",[["先暖手，再说话","cz:3"],["在灯下做自己的事","yan:3"],["心里一暖，感到被惦记","zhu:3"],["顺手也给别人点一盏","feng:3"]]],
+/* 器物直觉 */
+["第一眼看中一只杯子，你先看",[["触感和分量","cz:3"],["器形与线条","yan:3"],["釉色与画意","shan:3"],["胎骨的厚薄","yu:3"]]],
+["你选器物的原则是",[["能用十年","yu:3"],["顺手最要紧","cz:3"],["好看最要紧","shan:3"],["有趣最要紧","feng:3"]]],
+["打碎心爱的杯子你会",[["心疼很久","cz:3"],["沉默收拾，琢磨能不能修补","yan:3"],["拍照留念，发条动态悼念","feng:3"],["自责没用好它","yu:3"]]],
+["你对成套器物的态度",[["成套才有秩序","yu:3"],["成套才美","shan:3"],["一两件顺手的就够","cz:3"],["混搭出趣味","feng:3"]]],
+["你的收纳风格",[["各归其位","yan:3"],["舍不得扔","yu:3"],["桌面整齐，抽屉随性","cz:3"],["找不到了但记得大概在哪","feng:3"]]],
+["一件旧物陪伴你的上限是",[["一辈子","yu:3"],["用到坏为止","cz:3"],["好看就一直留着","shan:3"],["玩腻就换","feng:3"]]],
+["你的购物车更像",[["全是给家人朋友挑的礼物","zhu:3"],["都是能用很多年的耐用品","yu:3"],["心愿清单上的美的东西","shan:3"],["几乎清空，理性选手","yan:3"]]],
+["给朋友挑礼物你倾向",[["实用又暖心","cz:3"],["审美在线","shan:3"],["经典耐用","yu:3"],["搞笑整活","feng:3"]]],
+["你相信器物有灵吗",[["信，用久了自然有感情","yu:3"],["半信，至少有温度","cz:3"],["不信，但尊重","yan:3"],["信！还和它们说话","feng:3"]]],
+["面对破碎你会",[["修好继续用","yu:3"],["用金缮把裂痕变成风景","yan:3"],["干脆换新的","feng:3"],["挑件替代品，日子照过","cz:3"]]],
+["你的收藏癖",[["朋友们送的小东西","zhu:3"],["杯子丝巾这类美的","shan:3"],["长辈传下来的旧物","yu:3"],["不收藏，但眼里心里都收着","yan:3"]]],
+["杯子的把手重要吗",[["重要，要握得稳","cz:3"],["无所谓，端盏沿也一样","yan:3"],["颜值即正义","shan:3"],["反而不爱带把手的","feng:3"]]],
+["摆件在你家里",[["是主角","shan:3"],["是氛围担当","zhu:3"],["是念想","yu:3"],["越少越好","yan:3"]]],
+["新器物到手第一件事",[["洗净就先用起来","cz:3"],["研究它的工艺与来路","yan:3"],["找角度拍照","shan:3"],["查清楚保养方法再上手","yu:3"]]],
+["哪种文案最打动你",[["人间烟火气，最抚凡人心","cz:3"],["器以载道","yan:3"],["美是日常的慈悲","shan:3"],["有家的地方，就有热汤","zhu:3"]]],
+/* 深夜自我 */
+["睡前最后一件事",[["回顾一遍这一天","yan:3"],["喝口热的","cz:3"],["再刷五分钟——结果刷了一小时","feng:3"],["和在乎的人说晚安","zhu:3"]]],
+["失眠时你会",[["起来写点什么","yan:3"],["起来喝口温水","cz:3"],["干脆起来列好明天的清单","yu:3"],["起来把床铺弄得更舒服","shan:3"]]],
+["你的梦更像",[["全是聚餐团圆的热闹场面","zhu:3"],["清醒梦，逻辑在线","yan:3"],["画面极美，像电影","shan:3"],["平平淡淡，但格外真实","yu:3"]]],
+["深夜的社交软件上你",[["早已睡下，雷打不动","yu:3"],["看着别人的热闹","cz:3"],["关机或勿扰","yan:3"],["给白天没顾上的人回消息","zhu:3"]]],
+["回忆涌上来的时候你",[["一件一件都记得","yu:3"],["泡杯热饮慢慢想","cz:3"],["想两下就去找乐子","feng:3"],["把它写成只给自己看的话","shan:3"]]],
+["你给今年的自己一个总结词",[["温柔","cz:3"],["沉淀","yan:3"],["新鲜","feng:3"],["精致","shan:3"]]],
+["你和过去的自己",[["和解了，都是来路","yu:3"],["感谢他","cz:3"],["早翻篇了","feng:3"],["还在对话","yan:3"]]],
+["最想对三年后的自己说",[["别太累，多聚聚","zhu:3"],["去试那些没试过的","feng:3"],["别丢了深度","yan:3"],["记得好好吃饭","cz:3"]]],
+["你的能量像",[["烛火，照亮别人","zhu:3"],["慢火煨的汤","cz:3"],["深井静水","yan:3"],["四季的风","feng:3"]]],
+["白天与夜晚的你",[["夜里更灵动","feng:3"],["夜里更清醒","yan:3"],["夜里更柔软","cz:3"],["夜里更浪漫","shan:3"]]],
+["一人份的浪漫是",[["认真给自己泡一壶","cz:3"],["一支花配一段音乐","shan:3"],["计划一次没人知道的短途","feng:3"],["热热闹闹给自己做顿大餐","zhu:3"]]],
+["你熬过的夜大多因为",[["聊得正酣或灵感突袭","feng:3"],["想事情停不下来","yan:3"],["陪人","zhu:3"],["舍不得结束这一天","cz:3"]]],
+["夜里突然的伤感你会",[["煮点热的压下去","cz:3"],["写下来，拆解它","yan:3"],["发条动态又删掉","feng:3"],["换上干净的床品认真睡","shan:3"]]],
+["清晨的第一缕念头通常是",[["今天有什么好玩的","feng:3"],["早饭吃什么","cz:3"],["昨天没想完的问题","yan:3"],["今天想见谁","zhu:3"]]],
+["如果情绪有形状，你的更像",[["风的形状","feng:3"],["圆的","cz:3"],["方的，有棱角","yan:3"],["云的形状","shan:3"]]],
+["你更愿意被记住为",[["温暖过很多人","zhu:3"],["让人舒服的人","cz:3"],["有深度的人","yan:3"],["有审美的人","shan:3"]]],
+["哪个地方你最想留到深夜",[["旧宅子，守炉煮茶","cz:3"],["书店","yan:3"],["夜市","zhu:3"],["山顶吹风","feng:3"]]],
+["你的温柔更像",[["热茶的温度","cz:3"],["旧毯子的分量","yu:3"],["一盏灯的守候","zhu:3"],["一首诗的余韵","shan:3"]]],
+["岁月应该在你身上留下",[["温度","cz:3"],["深度","yan:3"],["分量","yu:3"],["故事","feng:3"]]],
+["如果器物会说话，你希望它对你说",[["我一直温着，你随时回来","cz:3"],["我记得你落下的每一笔","yan:3"],["风一来我就告诉你","feng:3"],["天黑了，我亮着呢","zhu:3"]]]
+];
+/*QB-END*/
+
+/* ===== 确定性权重校准：使六种器物的「期望牵引力」相等，保证结果公平 ===== */
+(function(){
+  const TARGET=300,cnt={},seen={};
+  QB.forEach(q=>q[1].forEach(o=>{const k=o[1].split(":")[0];cnt[k]=(cnt[k]||0)+1;}));
+  const plan={};
+  for(const k in cnt){
+    const w1=Math.max(1,Math.floor(TARGET/cnt[k]));
+    plan[k]={w1,extra:TARGET-cnt[k]*w1};
+  }
+  QB.forEach(q=>q[1].forEach(o=>{
+    const k=o[1].split(":")[0];
+    seen[k]=seen[k]||0;
+    const p=plan[k];
+    o[1]=k+":"+((seen[k]++<p.extra)?p.w1+1:p.w1);
+  }));
+})();
+
+/* ================= 器物档案 ================= */
+const VESSELS={
+cz:{name:"茶盏",sub:"温 润 之 器",icon:"ic-chazhan",color:"#9a6a43",emoji:"🍵",
+  verdict:"人间清醒，偏要微温。",
+  tags:["温润系","慢热但有回甘","人间烟火观察员"],
+  desc:["你的心里像揣着一只小火炉：话不抢、光不刺，但只要你在场，气氛就不自觉地松弛下来。你看得明白世事，却不愿用清醒去伤人——你的清醒是热的，先递上一口暖的，再谈别的。","朋友心情不好第一个想到的往往是你，因为你会倾听、不评判、不急着给答案。你信「先喝口热的，天大的事缓缓再讲」，这句话几乎就是你的处世哲学。","要留意的是：温润不等于无底线。你习惯把别人的舒服排在前面，自己的疲惫却常常悄悄往后挪。"],
+  advice:["每周给自己安排一场「一个人的茶席」，手机放到另一个房间，专心把一壶茶喝完。","练习把「这周不想去」温和但清楚地说出口——温柔可以有边界。","别把你喜欢的杯子供起来，器物用起来才活，日子也一样。","把想感谢的人当面告诉TA，你的心意值得被听见。"],
+  bless:"愿你身边常有一盏茶的温度——不烫，但一直热着。"},
+yan:{name:"古砚",sub:"沉 静 之 器",icon:"ic-guyan",color:"#3f4a52",emoji:"🖌️",
+  verdict:"心有深潭，磨得出岁月。",
+  tags:["深度系","静水流深","长期主义匠人"],
+  desc:["你的安静不是没话说，是在酿。别人在赶热闹，你在磨自己的墨：想得深、走得稳、出手有分量。你心里像有一方砚台——急事在上面磨一磨，就平了。","你不爱解释，因为你知道时间会替你说话。长期主义者说的就是你：十年磨一剑也好，慢工出细活也好，你笃信深度是最稀缺的东西。","要留意的是：深潭也要有出口。想得太深、说得太少，容易让在意你的人读不懂你。"],
+  advice:["给深度找一个出口：写作、手作、研究都好——砚台要磨，墨才出来。","定期把你会的东西讲给别人听，深度需要回声。","每月留一天「空白日」：什么都不产出，也完全正当。","允许自己「未完成」，不必每件事都磨到完美才示人。"],
+  bless:"愿你遇一方懂你的砚——磨得了墨，也容得下停笔。"},
+shan:{name:"团扇",sub:"清 雅 之 器",icon:"ic-tuanshan",color:"#a06b8f",emoji:"🪭",
+  verdict:"把日子摇出清风与画意。",
+  tags:["审美系","含蓄的浪漫","生活策展人"],
+  desc:["你对美有近乎本能的敏感：光线偏了两度、配色脏了一点，你未必说出来，但一定感觉得到。你的浪漫从不声张——像团扇，遮一半，露一半，留人慢慢领会。","你擅长把寻常日子过出画意：一张便签也要挑纸，一杯水也要配好看的杯垫。朋友都默契地承认：你的相册就是他们的灵感库。","要留意的是：别让「还不够美」变成对自己的挑剔。留一点糙，生活才透气。"],
+  advice:["把审美升级为作品：排版、插花、摄影，任选一门深耕下去。","每月给自己设一笔小小的「美之预算」，买花、看展、添一件心水之物都算。","刻意练习「粗糙的自由」：允许某一天不精致、不构图、随手活着。","拉上朋友一起看展喝茶——美被分享时，价值会翻倍。"],
+  bless:"愿有人懂你半掩的心事——扇底藏的那半面，最好看。"},
+feng:{name:"风铃",sub:"灵 动 之 器",icon:"ic-fengling",color:"#6f93a8",emoji:"🔔",
+  verdict:"风一来，我就知道你要出发了。",
+  tags:["自由系","高灵敏度","行走的彩蛋机"],
+  desc:["你是那种「风一吹就响」的人：对世界保持高灵敏度的好奇，点子多、反应快、总能在寻常日子里第一个发现彩蛋。朋友的新鲜事速报，基本由你独家供应。","你的自由不是逃离，而是一种活着的方式——你受不了长久被困在同一片天空下，哪怕只是换一条路回家，也能让你重新亮起来。","要留意的是：风铃响得再多，也要有落定的时刻。灵感贵在完成，而非收藏。"],
+  advice:["给好奇心安一个家：开个灵感本子或主页，把闪念归档，别让好点子随风散掉。","每周挑一个点子真正做完它——完成一个，胜过收藏十个。","留一点无所事事的白日梦时间，风也要停一停才能再起。","找一位笃定型的伙伴搭伙（比如玉扣型），你的风配上TA的锚，能走得更远。"],
+  bless:"愿你挂在有风的地方——响是自由，停是归处。"},
+yu:{name:"玉扣",sub:"温 厚 之 器",icon:"ic-yukou",color:"#5c8a72",emoji:"🪢",
+  verdict:"温润有节，一诺千金。",
+  tags:["安稳系","重诺的旧灵魂","时间的长期合伙人"],
+  desc:["你像一枚贴身戴了多年的玉扣：不喧哗，自有分量。你说话算数、感情长久、东西用得住——朋友心里的「永不跑路」型选手就是你。","你的稳是一种让别人敢于托底的能力。计划交给你放心，秘密交给你安心。旧物、旧友、旧时光，你都收得好好的，因为你相信有些东西值得用一生去养护。","要留意的是：你对别人句句兑现，也别忘了把「照顾好自己」写进承诺清单。"],
+  advice:["把「照顾好自己」郑重写进你的承诺清单，并像对待其他承诺一样兑现它。","偶尔做一件计划外的小事——稳中带一点浪，日子更有弹性。","旧物可以一直用，旧情绪要定期拿出来晾晒。","记录你做成的小事：你的可靠，值得先被你自己看见。"],
+  bless:"愿有人替你把绳结系牢——你守了所有人，也该被稳稳守着。"},
+zhu:{name:"烛台",sub:"明 亮 之 器",icon:"ic-zhutai",color:"#c07a2a",emoji:"🕯️",
+  verdict:"天黑了，我亮着呢。",
+  tags:["光源系","天生给热的人","氛围组组长"],
+  desc:["你是那种走到哪、亮到哪的人：聚会的暖场、朋友的树洞、家里的灯，多半都是你。你天生相信一件事——把光分给别人，自己不会变暗。","「有你在就很安心」这句话，你大概听过很多次。热闹因你而起，冷场因你失业。你记得每个人的生日和口味，像烛台记得每一次天黑。","要留意的是：烛火也要省着烧。不是所有的灯都需要你来点，先给自己添蜡，才是可持续的温柔。"],
+  advice:["每周留一个只属于自己的充电夜：不组局、不回消息、理直气壮地熄灯休息。","接受「不是所有灯都要你点」，别人的夜晚也可以由别人自己照亮。","把给予改成小剂量、可持续的方式，细水长流胜过燃烧式付出。","留意那些也愿意为你点灯的人，让他们进来。"],
+  bless:"愿你也有自己的烛台——你照亮了那么多夜晚，也该有人为你守一盏。"}
+};
+/* 每种器物专属话题标签：有梗、够新、不越界 */
+const SHARE_TAGS={
+  cz:"#人间清醒但偏爱微温 #茶系人格 #慢生活图鉴",
+  yan:"#静水流深型人格 #十年磨一剑 #低电量高质感",
+  shan:"#生活策展人 #含蓄的浪漫 #审美在线星人",
+  feng:"#行走的彩蛋机 #风一吹就想出发 #灵敏度超标",
+  yu:"#一诺千金型选手 #长期主义浪漫 #旧物收藏家",
+  zhu:"#氛围组组长 #天生给热的人 #冷场克星"
+};
+/* 器物→维度 权重矩阵 */
+const DIMS={
+  static:{name:"静气",matrix:{cz:.7,yan:1,shan:.5,feng:.2,yu:.6,zhu:.4},
+    hi:"心里有定盘星。再乱的局面，你也能先安顿好自己。",
+    mid:"静气时有时无，忙起来容易丢——记得给自己留白。",
+    lo:"你的活力在动中生长，静，是你值得解锁的下一课。"},
+  elegant:{name:"雅趣",matrix:{cz:.5,yan:.8,shan:1,feng:.6,yu:.5,zhu:.5},
+    hi:"对美天然敏感，日常在你手里自成风景。",
+    mid:"你有审美直觉，偶尔被忙碌盖住，需要一点唤醒。",
+    lo:"美对你尚在沉睡——从一只喜欢的杯子开始也不迟。"},
+  warm:{name:"暖意",matrix:{cz:1,yan:.3,shan:.4,feng:.5,yu:.8,zhu:1},
+    hi:"自带热源，靠近你的人都能分到一点暖。",
+    mid:"你暖得很克制，熟了才知道你有多好。",
+    lo:"你把温度藏在心里，表达它，是你今年的温柔功课。"},
+  free:{name:"逸兴",matrix:{cz:.3,yan:.2,shan:.5,feng:1,yu:.3,zhu:.4},
+    hi:"自在洒脱，风来了就出发，心从不设栏。",
+    mid:"你向往自由，但常被日常按住——记得按时放风。",
+    lo:"你偏爱安稳的秩序，偶尔越出边界，也别有风味。"}
+};
+const QUIZ_LEN=12;
+const DIM_KEYS=["static","elegant","warm","free"];
+/* 题库按 15 题一段，共 10 个主题 */
+const THEMES=["生活方式","审美偏好","性格自画像","社交关系","情绪压力","自然季节","声音感官","时空假想","器物直觉","深夜自省"];
+
+/* ================= 状态与逻辑 ================= */
+let quiz=[],answers=[],idx=0,pendingTimer=null,editMode=false;
+
+const $=id=>document.getElementById(id);
+function show(page){
+  document.querySelectorAll(".screen").forEach(s=>s.classList.remove("on"));
+  $(page).classList.add("on");
+  window.scrollTo(0,0);
+}
+/* 任何切题动作都取消尚未执行的自动跳题，避免快速点击造成跳两题 */
+function cancelAdvance(){
+  if(pendingTimer){clearTimeout(pendingTimer);pendingTimer=null;}
+}
+function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+function toast(msg){
+  const t=$("toast");t.textContent=msg;t.classList.add("show");
+  clearTimeout(t._tm);t._tm=setTimeout(()=>t.classList.remove("show"),2200);
+}
+function startQuiz(){
+  quiz=pickBalanced(QUIZ_LEN);
+  answers=new Array(QUIZ_LEN).fill(null);
+  idx=0;
+  editMode=false;
+  buildDots();
+  renderQ();
+  show("page-quiz");
+}
+/* 分层抽题：保证抽出的题覆盖全部六种器物，降低结果方差 */
+function pickBalanced(n){
+  const pool=shuffle(QB.map((q,i)=>i));
+  let picked=pool.slice(0,n);
+  const rest=pool.slice(n);
+  const keys=["cz","yan","shan","feng","yu","zhu"];
+  function coverOf(list){
+    const c={};
+    list.forEach(qi=>QB[qi][1].forEach(o=>{const k=o[1].split(":")[0];c[k]=(c[k]||0)+1;}));
+    return c;
+  }
+  for(let round=0;round<3;round++){
+    const cov=coverOf(picked);
+    const lack=keys.find(k=>!(cov[k]>=2));
+    if(!lack)break;
+    const donorIdx=rest.findIndex(qi=>QB[qi][1].some(o=>o[1].split(":")[0]===lack));
+    if(donorIdx===-1)break;
+    const victim=picked.findIndex(qi=>{
+      const ks={};QB[qi][1].forEach(o=>{const k=o[1].split(":")[0];ks[k]=(ks[k]||0)+1;});
+      return Object.keys(ks).length>1;
+    });
+    if(victim===-1)break;
+    const out=picked.splice(victim,1)[0];
+    picked.push(rest.splice(donorIdx,1)[0]);
+    rest.push(out);
+  }
+  return shuffle(picked).map(i=>QB[i]);
+}
+function buildDots(){
+  const box=$("q-dots");box.innerHTML="";
+  for(let i=0;i<QUIZ_LEN;i++){
+    const b=document.createElement("button");
+    b.textContent=i+1;
+    b.addEventListener("click",()=>{
+      if(answers[i]===null){toast("这题还没作答哦，先答完它～");return;}
+      idx=i;renderQ();
+    });
+    box.appendChild(b);
+  }
+}
+function renderQ(){
+  cancelAdvance();
+  const q=quiz[idx];
+  const done=answers.filter(a=>a!==null).length;
+  $("q-no").textContent="第 "+(idx+1)+" / "+QUIZ_LEN+" 题";
+  const ti=Math.floor(QB.indexOf(q)/15);
+  $("q-theme").textContent=THEMES[ti]||"器物自测";
+  $("q-bar").style.width=(done/QUIZ_LEN*100)+"%";
+  $("q-tag").textContent=editMode
+    ? "修改模式 · 第 "+(idx+1)+" 问 · 选完不会自动跳题"
+    : "第 "+(idx+1)+" 问 · 已答 "+done+" / "+QUIZ_LEN;
+  $("q-text").textContent=q[0];
+  $("btn-quick").textContent=editMode?"改好了，重新看结果 →":"已答完，直接看结果 →";
+  const opts=$("q-opts");opts.innerHTML="";
+  q[1].forEach((o,i)=>{
+    const b=document.createElement("button");
+    b.className="opt"+(answers[idx]===i?" sel":"");
+    b.innerHTML='<span class="mark"></span><span>'+o[0]+"</span>";
+    b.addEventListener("click",()=>{
+      const curIdx=idx;
+      answers[curIdx]=i;
+      renderQ();
+      if(editMode)return;               // 修改模式：只记答案，不自动跳题
+      pendingTimer=setTimeout(()=>{
+        pendingTimer=null;
+        if(curIdx!==idx)return;           // 期间用户已切题，取消自动跳转
+        if(idx<QUIZ_LEN-1){idx++;renderQ();}
+        else tryFinish(true);
+      },260);
+    });
+    opts.appendChild(b);
+  });
+  [...$("q-dots").children].forEach((d,i)=>{
+    d.classList.toggle("done",answers[i]!==null);
+    d.classList.toggle("cur",i===idx);
+  });
+  $("btn-prev").disabled=idx===0;
+  $("btn-next").textContent=idx===QUIZ_LEN-1?"查看结果":"下一题";
+  const card=$("q-card");card.style.animation="none";void card.offsetWidth;card.style.animation="";
+}
+function firstUnanswered(){return answers.findIndex(a=>a===null);}
+function tryFinish(fromLast){
+  const u=firstUnanswered();
+  if(u!==-1){
+    toast("还有 "+answers.filter(a=>a===null).length+" 题未作答，已带你去补答～");
+    idx=u;renderQ();return;
+  }
+  editMode=false;
+  showResult();
+}
+function calc(){
+  const s={cz:0,yan:0,shan:0,feng:0,yu:0,zhu:0};
+  const d={static:0,elegant:0,warm:0,free:0};
+  answers.forEach((oi,qi)=>{
+    const scoring=quiz[qi][1][oi][1].split(",");
+    scoring.forEach(p=>{
+      const [k,v]=p.split(":");s[k]+=Number(v||3);
+    });
+  });
+  DIM_KEYS.forEach(dk=>{
+    let sum=0,max=0;
+    answers.forEach((oi,qi)=>{
+      const opts=quiz[qi][1];
+      let chosen=0,qmax=0;
+      opts.forEach((o,i)=>{
+        let c=0;
+        o[1].split(",").forEach(p=>{const [k,v]=p.split(":");c+=Number(v||3)*(DIMS[dk].matrix[k]||0);});
+        qmax=Math.max(qmax,c);
+        if(i===oi)chosen=c;
+      });
+      sum+=chosen;max+=qmax;
+    });
+    d[dk]=Math.max(5,Math.min(96,Math.round(100*sum/Math.max(1,max))));
+  });
+  const rank=Object.entries(s).sort((a,b)=>b[1]-a[1]);
+  return {s,d,rank};
+}
+function showResult(){
+  const {s,d,rank}=calc();
+  const key=rank[0][0],auxKey=rank[1][0];
+  const v=VESSELS[key],aux=VESSELS[auxKey];
+  $("r-use").setAttribute("href","#"+v.icon);
+  $("r-art").style.color=v.color;
+  $("r-name").textContent=v.name;
+  $("r-sub").textContent=v.sub;
+  $("r-verdict").textContent=v.verdict;
+  /* 本轮器物状态：由本次四维里最高的那一项决定，随作答变化 */
+  const STATES={static:"静置",elegant:"映光",warm:"微温",free:"临风"};
+  const dimTop=DIM_KEYS.reduce((a,b)=>d[a]>=d[b]?a:b);
+  $("r-state").textContent="本轮器物状态 · 「"+STATES[dimTop]+"」";
+  $("r-tags").innerHTML=v.tags.map(t=>"<span>"+t+"</span>").join("");
+  $("r-desc").innerHTML=v.desc.map(p=>"<p>"+p+"</p>").join("");
+  $("r-dims").innerHTML=DIM_KEYS.map(dk=>{
+    const dm=DIMS[dk],pct=d[dk];
+    const note=pct>=72?dm.hi:pct>=45?dm.mid:dm.lo;
+    return '<div class="dim"><div class="dim-top"><b>'+dm.name+"</b><i>"+pct+" / 100</i></div>"+
+      '<div class="track"><i data-w="'+pct+'"></i></div><p class="dim-note">'+note+"</p></div>";
+  }).join("");
+  /* 本轮手签 + 六器共鸣度：全部由这一次的选择算出，每次都不同 */
+  const hit={};
+  answers.forEach((oi,qi)=>{
+    const k=quiz[qi][1][oi][1].split(":")[0];
+    hit[k]=(hit[k]||0)+1;
+  });
+  const hits=Object.entries(hit).sort((a,b)=>b[1]-a[1]);
+  const first=hits[0],second=hits[1];
+  const totalS=Object.values(s).reduce((a,b)=>a+b,0);
+  $("r-sign").textContent="这一轮 "+QUIZ_LEN+" 次伸手，"+first[1]+" 次落向「"+VESSELS[first[0]].name+"」"
+    +(second?"，"+second[1]+" 次借了「"+VESSELS[second[0]].name+"」的脾气":"")
+    +"。六器共得 "+totalS+" 分，改一题，下面这些线就会动。";
+  const maxS=Math.max.apply(null,Object.values(s));
+  $("r-resos").innerHTML=Object.keys(VESSELS).map(k=>{
+    const pct=Math.round(100*s[k]/Math.max(1,maxS));
+    const lead=k===key;                 // 只给最终本命器物加标记，并列也不重复
+    return '<div class="reso'+(lead?" lead":"")+'"><div class="reso-top"><span>'+VESSELS[k].name
+      +(lead?"<em>本命</em>":"")+"</span><i>"+s[k]+' 分</i></div>'
+      +'<div class="track"><i data-w="'+pct+'"></i></div></div>';
+  }).join("");
+  const balanced=rank[1][1]>=rank[0][1]-1;
+  $("r-aux").innerHTML='<svg style="color:'+aux.color+'"><use href="#'+aux.icon+'"/></svg>'+
+    '<div class="aux-t"><b>辅器 · '+aux.name+"</b><p>"+(balanced?"它与你几乎并肩——"+aux.bless:aux.bless)+"</p></div>";
+  $("r-advice").innerHTML=v.advice.map((a,i)=>"<li><span class='n'>"+(i+1)+"</span><span>"+a+"</span></li>").join("");
+  $("r-share").textContent="我在「本命器物测试」抽到的是——"+v.name+" "+v.emoji+"\n判词："+v.verdict
+    +"\n本轮状态：「"+STATES[dimTop]+"」 · "+first[1]+" 次落向它"
+    +"\n几件东方器物各有脾气，哪一件和你同频？（不剧透，来测）\n\n"
+    +"#本命器物 #国风氛围感 #东方美学 #趣味自测 #灵魂同频\n"+SHARE_TAGS[key];
+  show("page-result");
+  setTimeout(()=>{document.querySelectorAll("#r-dims .track i, #r-resos .track i").forEach(i=>i.style.width=i.dataset.w+"%");},150);
+}
+/* 事件绑定 */
+$("btn-start").addEventListener("click",startQuiz);
+$("btn-retry").addEventListener("click",startQuiz);
+$("btn-home").addEventListener("click",()=>show("page-home"));
+$("btn-edit").addEventListener("click",()=>{
+  editMode=true;idx=0;renderQ();show("page-quiz");
+});
+$("btn-quick").addEventListener("click",()=>{
+  if(firstUnanswered()!==-1){tryFinish(false);return;}
+  editMode=false;showResult();      // 保留本组题目，仅按改动后的答案重算
+});
+$("btn-prev").addEventListener("click",()=>{if(idx>0){idx--;renderQ();}});
+$("btn-next").addEventListener("click",()=>{
+  if(answers[idx]===null){toast("这一题还没选哦～凭第一感觉选就好");return;}
+  if(idx<QUIZ_LEN-1){idx++;renderQ();}
+  else tryFinish(true);
+});
+$("btn-copy").addEventListener("click",()=>{
+  const text=$("r-share").textContent;
+  const done=()=>toast("文案已复制，去发帖吧～");
+  if(navigator.clipboard&&navigator.clipboard.writeText){
+    navigator.clipboard.writeText(text).then(done).catch(()=>fallback());
+  }else fallback();
+  function fallback(){
+    const ta=document.createElement("textarea");
+    ta.value=text;ta.style.position="fixed";ta.style.opacity="0";
+    document.body.appendChild(ta);ta.select();
+    try{document.execCommand("copy");done();}catch(e){toast("复制失败，请长按文案手动复制");}
+    document.body.removeChild(ta);
+  }
+});
+</script>
+</body>
+</html>
